@@ -26,7 +26,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\Assembly-CSharp\</OutputPath>
-    <DefineConstants>UNITY_2022_3_6;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;AMPLIFY_SHADER_EDITOR;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_6;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;AMPLIFY_SHADER_EDITOR;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169,0649</NoWarn>
@@ -46,33 +46,100 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
+     <Compile Include="Assets\Input Action\PlayerControls.cs" />
+     <Compile Include="Assets\Scripts\System\EnemySpawner.cs" />
      <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovements.cs" />
      <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
      <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
      <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
      <Folder Include="Assets" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Jump" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Hurt\Blue" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Hurt" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation\Thief" />
+     <Folder Include="Assets\Scripts\Enemy" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Prefabs\Red" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Scene" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Tile Palette\TP Grass" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Idle\Red" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Jump\Green" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Idle\Green" />
      <None Include="Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation\Merchant" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Death\Green" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Material" />
+     <Folder Include="Assets\Prefab\Enemy\Slime" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Death\Red" />
+     <Folder Include="Assets\Sprite\Image" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Idle" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Idle\Blue" />
+     <Folder Include="Assets\Scripts\System" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Prefab" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Prefab\Props" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Prefab" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Death\Blue" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Prefabs\Blue" />
      <Folder Include="Assets\Evil Wizard 2\Scene demo" />
+     <Folder Include="Assets\War" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Jump\Red" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Hurt\Red" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites" />
      <None Include="Assets\Cainos\Pixel Art Top Down - Basic\Shader\SH Sprite Shadow.shader" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic" />
+     <Folder Include="Assets\Input Action" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Texture" />
      <Folder Include="Assets\Scenes" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Scenes" />
+     <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Script" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Idle\Blue" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Jump\Green" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Hurt\Red" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Death" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Jump\Red" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Death\Red" />
      <Folder Include="Assets\Evil Wizard 2\Sprites" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Death\Blue" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Tile Palette\TP Wall" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Hurt\Blue" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation\Soldier" />
      <Folder Include="Assets\Cainos" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Jump\Blue" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Animation" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Prefabs\Green" />
+     <None Include="Assets\War\Slime Enemy - Pixel Art\README.txt" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Sprite" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Death" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Preset" />
+     <Folder Include="Assets\Sprite" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Tile Palette" />
+     <Folder Include="Assets\Prefab" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation\Peasant" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation\Knight" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Idle\Red" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Idle\Green" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Prefabs" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Idle" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Prefab\Plant" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Hurt\Green" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Original artwork" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Animation\Death\Green" />
+     <Folder Include="Assets\Miniature Army 2D V.1" />
      <Folder Include="Assets\Evil Wizard 2" />
      <Folder Include="Assets\Evil Wizard 2\Animations" />
+     <Folder Include="Assets\Miniature Army 2D V.1\Animation\Priest" />
+     <Folder Include="Assets\Prefab\Enemy" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Hurt" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Jump\Blue" />
      <None Include="Assets\Cainos\Pixel Art Top Down - Basic\Shader\SH Sprite Shadow Mask.shader" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Hurt\Green" />
+     <Folder Include="Assets\Scripts\Player" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Scene" />
+     <Folder Include="Assets\War\Slime Enemy - Pixel Art\Sprites\Jump" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Prefab\Player" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Shader" />
      <Folder Include="Assets\Cainos\Pixel Art Top Down - Basic\Tile Palette\TP Stone Ground" />
@@ -703,6 +770,9 @@
      <Reference Include="PsdPlugin">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
      </Reference>
+     <Reference Include="com.unity.cinemachine.editor">
+     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Editor">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
      </Reference>
@@ -754,26 +824,32 @@
      <Reference Include="Unity.VisualScripting.Flow">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Flow.Editor">
-     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.InternalAPIEngineBridge.001">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Mathematics.Editor">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.VisualScripting.Flow.Editor">
+     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.2D.Common.Runtime">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEngine.UI">
-     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.Tilemap.Extras.Editor">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Timeline">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem">
+     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem.ForUI">
+     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
@@ -816,6 +892,9 @@
      </Reference>
      <Reference Include="Unity.VisualScripting.State">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+     </Reference>
+     <Reference Include="Cinemachine">
+     <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
      </Reference>
      <Reference Include="Unity.2D.SpriteShape.Editor">
      <HintPath>D:\Unity\TeamA\Team A\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
