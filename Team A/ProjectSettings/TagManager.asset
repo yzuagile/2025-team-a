@@ -15,10 +15,10 @@ TagManager:
   - 
   - 
   - 
+  - Player
   - 
   - 
-  - 
-  - 
+  - Wall
   - 
   - 
   - 
@@ -41,12 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Layer 1
+  - name: Ground
     uniqueID: 2425651459
     locked: 0
-  - name: Layer 2
+  - name: Gameplay
     uniqueID: 4250941897
     locked: 0
-  - name: Layer 3
+  - name: ForeGround
     uniqueID: 4189426099
+    locked: 0
+  - name: UI
+    uniqueID: 609833145
     locked: 0
