@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d6685b42297664e8af1859aaff1d08, type: 3}
+  m_Name: BlueSlime
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1166135871813786337, guid: be9c57e45dacf214dab461e6d4d455f4, type: 3}
+  enemyName: Blue Slime
+  maxHealth: 50
+  movementSpeed: 1
+  contactDamage: 10
+  experienceDropped: 50
