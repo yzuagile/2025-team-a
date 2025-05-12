@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -332614859547141166}
   - component: {fileID: -4697076795327511350}
   - component: {fileID: 1092448902074680591}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GreenSlime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,6 +104,8 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 2388ec771e9cd9849aa4abd81f88f60c, type: 2}
   currentHealth: 0
   currentMovementSpeed: 0
+  experienceOrbPrefab: {fileID: 4188602671250987629, guid: f7470c92ce038f7419eed27aad32721e,
+    type: 3}
 --- !u!50 &-332614859547141166
 Rigidbody2D:
   serializedVersion: 4

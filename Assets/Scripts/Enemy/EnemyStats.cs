@@ -9,7 +9,8 @@ public class EnemyStats : MonoBehaviour
     
     [HideInInspector] public float currentHealth;
     [HideInInspector] public float currentMovementSpeed;
-
+    
+    public GameObject experienceOrbPrefab;
     void Awake()
     {
         if (enemyData != null)
@@ -21,6 +22,11 @@ public class EnemyStats : MonoBehaviour
         {
             Debug.LogError($"EnemyData 未在 {gameObject.name} 上設定！");
             currentHealth = 1f;
+        }
+
+        if (experienceOrbPrefab == null)
+        {
+            Debug.LogError($"EnemyStates:　經驗球 Prefab 未在 {gameObject.name} 的 EnemyStats 上設定！將無法掉落經驗。");
         }
     }
     
@@ -54,7 +60,15 @@ public class EnemyStats : MonoBehaviour
 
     public void die()
     {
-        Debug.Log($"{gameObject.name}死亡，銷毀GameObject");
+        Debug.Log($"EnemyStats: {enemyData.enemyName} ({gameObject.name}) 死亡！");
+        if (experienceOrbPrefab != null && enemyData != null)
+        {
+            GameObject orbGO  = Instantiate(experienceOrbPrefab, transform.position, Quaternion.identity);
+            ExperienceOrb orbScript = orbGO.GetComponent<ExperienceOrb>();
+            if (orbScript != null)
+                orbScript.SetExperience(GetExperienceDropped());
+        }
+        
         Destroy(gameObject);
     }
 }

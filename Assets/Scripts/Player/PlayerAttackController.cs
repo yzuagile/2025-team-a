@@ -11,8 +11,8 @@ public class PlayerAttackController : MonoBehaviour
     
     public float attackRange = 10f;
     public float attackTimer = 0f;
-
-
+    public LayerMask enemyLayer;
+    
     void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
@@ -69,7 +69,7 @@ public class PlayerAttackController : MonoBehaviour
     
     Transform FindNearestEnemyOptimized(float searchRadius)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, searchRadius); // 只搜索一定範圍內
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, searchRadius, enemyLayer);
         Transform nearestEnemy = null;
         float minDistance = Mathf.Infinity;
 
