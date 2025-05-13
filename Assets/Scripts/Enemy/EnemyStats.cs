@@ -11,6 +11,10 @@ public class EnemyStats : MonoBehaviour
     [HideInInspector] public float currentMovementSpeed;
     
     public GameObject experienceOrbPrefab;
+
+    private Animator animator;
+    public bool isPlayerInRange = false;
+
     void Awake()
     {
         if (enemyData != null)
@@ -36,11 +40,12 @@ public class EnemyStats : MonoBehaviour
     public int GetExperienceDropped() { return enemyData != null ? enemyData.experienceDropped : 0; }
     private bool isDead = false;
 
+    private GameObject[] skeleton;
     // Start is called before the first frame update
     void Start()
     {
-        //anim=GetComponent<Animator>();
-        
+        skeleton = GameObject.FindGameObjectsWithTag("skeleton");
+        animator=GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,6 +53,14 @@ public class EnemyStats : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} CurrentHealth: {currentHealth}");
         //anim.SetFloat("EnemyCurrentHealth", currentHealth);
+        if (animator != null)
+        {
+            // 只有 skeleton 才會播放攻擊動畫
+            if (CompareTag("skeleton"))
+            {
+                animator.SetBool("isPlayerInRange", isPlayerInRange);
+            }
+        }
     }
 
     public void TakeDamage(float damage)
@@ -71,7 +84,26 @@ public class EnemyStats : MonoBehaviour
             if (orbScript != null)
                 orbScript.SetExperience(GetExperienceDropped());
         }
-        
+        if (CompareTag("skeleton"))
+        {
+            StartCoroutine(DieWithAnimation());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private IEnumerator DieWithAnimation()
+    {
+        animator.SetBool("isDead", true);
+
+        // 播放死亡動畫（假設動畫名稱是 "Die"）
+        animator.Play("Death Skeleton with sword");
+
+        // 等待動畫時間，這裡假設動畫長度是 1 秒
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log($"{gameObject.name}死亡，銷毀GameObject");
         Destroy(gameObject);
     }
 }
