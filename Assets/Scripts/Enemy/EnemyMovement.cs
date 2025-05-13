@@ -10,20 +10,23 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyStats enemyStats;
     private Transform playerTransform;
-    
+
     private float moveSpeed;
-    private float contactDamageCooldown = 1.0f; // 每秒造成一次傷害
+    private float contactDamageCooldown = 1.0f; // �C���y���@���ˮ`
     private float lastDamageTime = -1.0f;
+
+    private Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         enemyStats = GetComponent<EnemyStats>();
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         if (enemyStats != null && enemyStats.enemyData != null)
         {
             moveSpeed = enemyStats.GetBaseMovementSpeed();
@@ -48,9 +51,10 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    private bool isDead = false;
     void Update()
     {
-        
+        isDead = anim.GetBool("isDead");
     }
 
     void FixedUpdate()
@@ -59,12 +63,16 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
+        if (isDead)
+        {
+            moveSpeed= 0f;
+        }
         Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
-        
+
         Vector2 displacement = directionToPlayer * moveSpeed * Time.fixedDeltaTime;
-        
+
         Vector2 targetPosition = rb.position + displacement;
-        
+
         rb.MovePosition(targetPosition);
     }
 
@@ -79,7 +87,6 @@ public class EnemyMovement : MonoBehaviour
             {
                 float damageToDeal = enemyStats.GetContactDamage();
                 playerStats.TakeDamage(damageToDeal);
-                
                 lastDamageTime = Time.time;
             }
         }

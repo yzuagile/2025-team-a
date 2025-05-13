@@ -51,7 +51,7 @@ public class PlayerAttackController : MonoBehaviour
                 for (int i = 0; i < playerStats.GetPlayerProjectilesPerShot(); i++)
                 {
                     GameObject projectileObj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                    Projectile projectileScript  = projectileObj.GetComponent<Projectile>();
+                    Projectile projectileScript = projectileObj.GetComponent<Projectile>();
 
                     if (projectileScript != null)
                     {
