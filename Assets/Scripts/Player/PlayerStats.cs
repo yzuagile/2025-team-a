@@ -43,15 +43,6 @@ public class PlayerStats : MonoBehaviour
             Debug.LogError("PlayerStats: 找不到 PlayerMovements 組件！");
         }
         
-        uiManager = UIManager.instance;
-        if (uiManager == null)
-        {
-            Debug.LogError("PlayerStats: 找不到 UIManager 實例！UI 可能無法更新。");
-        }
-        currentHealth = maxHealth;
-        uiManager?.UpdateHealthUI(currentHealth, maxHealth);
-        uiManager?.UpdateHealthUI(currentExp, expToNextLevel);
-        uiManager?.UpdateLevelText(currentLevel);
     }
     
     void InitializeUI()
@@ -67,17 +58,39 @@ public class PlayerStats : MonoBehaviour
             Debug.LogError("PlayerStats: Awake 時 UIManager 未就緒！");
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        InitializeUI();
+        uiManager = UIManager.instance;
+        if (uiManager == null)
+        {
+            Debug.LogError("PlayerStats: 找不到 UIManager 實例！UI 可能無法更新。");
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            uiManager?.UpdateHealthUI(currentHealth, maxHealth);
+            uiManager?.UpdateExperienceUI(currentExp, expToNextLevel);
+            uiManager?.UpdateLevelText(currentLevel);
+            InitializeUI();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(10f); // 按空白鍵 -10 HP
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            currentHealth += 10f; // 回 10 血
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+            uiManager?.UpdateHealthUI(currentHealth, maxHealth);
+        }
     }
 
     public float GetPlayerAttackDamage() { return baseAttackDamage; }

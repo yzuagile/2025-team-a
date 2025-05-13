@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     [Header("升級選項面板")]
     public GameObject upgradePanel; // 整個升級面板的父物件 (目前先放著)
 
+    [Header("暫停畫面")]
+    public GameObject pausePanel;
+
     void Awake()
     {
         if (instance == null)
@@ -32,6 +35,9 @@ public class UIManager : MonoBehaviour
         {
             upgradePanel.SetActive(false);
         }
+
+        // 保險：確保時間縮放是正常的
+        Time.timeScale = 1f;
     }
     
     public void UpdateHealthUI(float currentHealth, float maxHealth)
@@ -98,7 +104,18 @@ public class UIManager : MonoBehaviour
             Debug.Log("UIManager: 隱藏升級面板，遊戲已恢復。");
         }
     }
-    
+
+    public void TogglePausePanel()
+    {
+        if (pausePanel != null)
+        {
+            bool isActive = pausePanel.activeSelf;
+            pausePanel.SetActive(!isActive);
+            Time.timeScale = isActive ? 1f : 0f;
+            Debug.Log(isActive ? "繼續遊戲" : "遊戲暫停");
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
