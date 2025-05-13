@@ -11,21 +11,21 @@ public class PlayerStats : MonoBehaviour
     public int currentExp = 1;
     public int expToNextLevel = 100;
     public float levelExpMultiplier = 1.5f;
-    
+
     [Header("Player Health")]
     public float currentHealth;
     public float maxHealth = 100f;
 
-    [Header("Player Attack")] 
+    [Header("Player Attack")]
     public float baseAttackDamage = 10f;
     public float baseProjectileSpeed = 8f;
     public float attackInterval = 1.0f; // 每次攻擊的間隔時間 (秒)
     public int projectilesPerShot = 1; // 一次發射多少個彈幕
     public float attackRange = 10f; // 武器索敵範圍
-    
+
     [Header("Player Movement")]
     public float baseMoveSpeed = 5f;
-    
+
     [Header("Player Pickup")]
     public float pickupRadius = 1.5f;
 
@@ -50,7 +50,7 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth = maxHealth;
     }
-    
+
     void InitializeUI()
     {
         uiManager = UIManager.instance;
@@ -64,7 +64,7 @@ public class PlayerStats : MonoBehaviour
         uiManager.UpdateExperienceUI(currentExp, expToNextLevel);
         uiManager.UpdateLevelText(currentLevel);
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +74,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public float GetPlayerAttackDamage() { return baseAttackDamage; }
@@ -88,7 +88,7 @@ public class PlayerStats : MonoBehaviour
             return;
         currentHealth -= damage;
         Debug.Log($"PlayerStats: 玩家受到 {damage} 點傷害, 剩餘 HP: {currentHealth}");
-        
+
         // --- 更新 UI ---
         uiManager?.UpdateHealthUI(currentHealth, maxHealth);
         if (currentHealth <= 0)
@@ -101,7 +101,8 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("PlayerStats: 玩家死亡！");
         GetComponent<PlayerMovements>().enabled = false;
-        if (GetComponent<PlayerAttackController>() != null) {
+        if (GetComponent<PlayerAttackController>() != null)
+        {
             GetComponent<PlayerAttackController>().enabled = false;
         }
     }
@@ -116,7 +117,7 @@ public class PlayerStats : MonoBehaviour
             LevelUp();
             leveledUp = true;
         }
-        
+
         // --- 更新 UI ---
         if (!leveledUp)
         {
@@ -129,9 +130,9 @@ public class PlayerStats : MonoBehaviour
         currentLevel++;
         currentExp -= expToNextLevel;
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
-        
+
         Debug.Log($"PlayerStats: 升級到 Lv. {currentLevel}! 下一級需要 {expToNextLevel} 經驗。");
-        
+
         //  更新UI
         uiManager?.UpdateExperienceUI(currentExp, expToNextLevel);
         uiManager?.UpdateLevelText(currentLevel);

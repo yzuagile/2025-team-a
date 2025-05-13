@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 417382743}
   - component: {fileID: 417382746}
   - component: {fileID: 417382748}
-  - component: {fileID: 417382747}
+  - component: {fileID: 417382749}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -401,25 +401,6 @@ MonoBehaviour:
   sortingOrderMultiplier: 10
   sortingOrderOffset: 0
   pivotOffsetY: 0
---- !u!114 &417382747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417382739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11f531a151f2fdc4e85eed48dffbac7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2536842000978387714, guid: 69089442bcea6a04f9f8e6d4fc7d26ed,
-    type: 3}
-  attackRange: 10
-  attackTimer: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &417382748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +426,9 @@ MonoBehaviour:
   attackRange: 20
   baseMoveSpeed: 5
   pickupRadius: 1.5
+  availableUpgrades:
+  - {fileID: 11400000, guid: 4724e078a5ad21341b1210a0f1fd52c8, type: 2}
+  upgradesToShowPerLevel: 3
 --- !u!114 &417382749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +444,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2536842000978387714, guid: 69089442bcea6a04f9f8e6d4fc7d26ed,
     type: 3}
   attackRange: 10
-  attackTimer: 1
+  attackTimer: 0.58
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1451,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyData
       value: 
-      objectReference: {fileID: 11400000, guid: c449b4a7138b0ed4389d1881bdef7f5c,
+      objectReference: {fileID: 11400000, guid: 3045444622c20904595c2c97bf6f421b,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4321,6 +4308,7 @@ MonoBehaviour:
   expSlider: {fileID: 1174526641}
   levelText: {fileID: 529741232}
   upgradePanel: {fileID: 0}
+  upgradeButtons: []
 --- !u!4 &1721498773
 Transform:
   m_ObjectHideFlags: 0

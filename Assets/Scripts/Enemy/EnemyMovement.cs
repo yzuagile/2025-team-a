@@ -54,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isDead = false;
     void Update()
     {
-        isDead = anim.GetBool("isDead");
+        //isDead = anim.GetBool("isDead");
     }
 
     void FixedUpdate()

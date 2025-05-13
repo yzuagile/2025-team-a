@@ -46,7 +46,7 @@ public class EnemyStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log($"{gameObject.name}���e��q: {currentHealth}");
+        Debug.Log($"{gameObject.name} CurrentHealth: {currentHealth}");
         //anim.SetFloat("EnemyCurrentHealth", currentHealth);
     }
 

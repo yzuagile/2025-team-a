@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerAttackController : MonoBehaviour
 {
     private PlayerStats playerStats;
-    
+
     public GameObject projectilePrefab;
-    
+
     public float attackRange = 10f;
     public float attackTimer = 0f;
     public LayerMask enemyLayer;
-    
+
     void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
@@ -22,11 +22,11 @@ public class PlayerAttackController : MonoBehaviour
             this.enabled = false;
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PlayerAttackController : MonoBehaviour
         if (playerStats == null)
             return;
         attackTimer += Time.deltaTime;
-        
+
         float currentAttackInterval = playerStats.GetPlayerAttackInterval(); // 假設有方法獲取
         float currentProjectileSpeed = playerStats.GetPlayerProjectileSpeed();
         float currentDamage = playerStats.GetPlayerAttackDamage(); // 或 GetCalculatedDamage()
@@ -44,7 +44,7 @@ public class PlayerAttackController : MonoBehaviour
         if (attackTimer >= currentAttackInterval)
         {
             attackTimer = 0f;
-            
+
             Transform nearestEnemy = FindNearestEnemyOptimized(attackRange);
             if (nearestEnemy != null)
             {
@@ -66,7 +66,7 @@ public class PlayerAttackController : MonoBehaviour
             }
         }
     }
-    
+
     Transform FindNearestEnemyOptimized(float searchRadius)
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, searchRadius, enemyLayer);

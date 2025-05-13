@@ -98,14 +98,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1166135871813786337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268647891294d1840bdfe22ad8ba6544, type: 3}
+  m_Script: {fileID: 11500000, guid: 19022122e7f311c46aac89b4aedeee59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 2388ec771e9cd9849aa4abd81f88f60c, type: 2}
-  currentHealth: 0
-  currentMovementSpeed: 0
-  experienceOrbPrefab: {fileID: 4188602671250987629, guid: f7470c92ce038f7419eed27aad32721e,
-    type: 3}
 --- !u!50 &-332614859547141166
 Rigidbody2D:
   serializedVersion: 4
@@ -190,6 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1763a20ab65e194196cb634b0e2acd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: 2388ec771e9cd9849aa4abd81f88f60c, type: 2}
   currentHealth: 0
   currentMovementSpeed: 0
+  experienceOrbPrefab: {fileID: 4188602671250987629, guid: f7470c92ce038f7419eed27aad32721e,
+    type: 3}
