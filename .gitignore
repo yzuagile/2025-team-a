@@ -26,7 +26,7 @@
 # Visual Studio / Rider temporary files #
 #---------------------------------------#
 .vs/ # Visual Studio IDE temporary files
-*.csproj.user
+*.csproj
 *.sln.user
 *.suo
 *.tmp
