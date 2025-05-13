@@ -7,30 +7,29 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance; // 簡化版靜態變數
-    
+
     [Header("狀態顯示 UI 元素")]
     public Slider healthSlider;
     public Slider expSlider;
     public TMP_Text levelText;
-    
+
     [Header("升級選項面板")]
-    public GameObject upgradePanel; // 整個升級面板的父物件 (目前先放著)
+    public GameObject upgradePanel;
+    public List<UpgradeButtonUI> upgradeButtons; // 存放面板中所有升級按鈕的引用
+
+    private PlayerStats playerStats; // 引用 PlayerStats，方便在關閉面板時通知
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            upgradePanel.SetActive(false);
         }
         else
         {
             Debug.LogWarning("UIManager: 場景中發現多個 UIManager 實例！", this);
             Destroy(gameObject);
-        }
-
-        if (upgradePanel != null && upgradePanel.activeInHierarchy)
-        {
-            upgradePanel.SetActive(false);
         }
     }
     
@@ -44,7 +43,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            HideUpgradePanel();
+            Debug.LogWarning("UIManager: HP Slider 未設定！");
         }
     }
     
@@ -89,7 +88,74 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    public void HideUpgradePanel()
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerStats = FindObjectOfType<PlayerStats>(); // 同樣，實際項目中可優化
+        if(playerStats == null)
+        {
+            Debug.LogError("UIManager: 找不到 PlayerStats！部分功能可能異常。");
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    // 由 PlayerStats 在升級時呼叫
+    public void ShowUpgradePanel(List<UpgradeOptionData> optionsToShow)
+    {
+        if (upgradePanel != null)
+        {
+            upgradePanel.SetActive(true);
+            Time.timeScale = 0f; // 顯示面板時暫停遊戲
+
+            if (optionsToShow == null || optionsToShow.Count == 0)
+            {
+                Debug.LogWarning("UIManager: 沒有可顯示的升級選項！");
+                // 可以考慮直接關閉面板或顯示 "無可用升級"
+                HideUpgradePanel(); // 找不到選項就直接關閉
+                return;
+            }
+
+            // 確保按鈕數量與選項數量匹配 (至少取較小值)
+            int numOptionsToDisplay = Mathf.Min(optionsToShow.Count, upgradeButtons.Count);
+
+            for (int i = 0; i < numOptionsToDisplay; i++)
+            {
+                if (i < upgradeButtons.Count && upgradeButtons[i] != null && i < optionsToShow.Count)
+                {
+                    upgradeButtons[i].gameObject.SetActive(true); // 確保按鈕是可見的
+                    upgradeButtons[i].Setup(optionsToShow[i], playerStats); // 使用 PlayerStats 的引用
+                }
+                else
+                {
+                    Debug.LogError($"UIManager: 升級按鈕 {i} 或選項數據為 null。");
+                    if (i < upgradeButtons.Count && upgradeButtons[i] != null)
+                        upgradeButtons[i].gameObject.SetActive(false); // 隱藏無效按鈕
+                }
+            }
+
+            // 如果選項比按鈕少，隱藏多餘的按鈕
+            for (int i = numOptionsToDisplay; i < upgradeButtons.Count; i++)
+            {
+                if (upgradeButtons[i] != null)
+                {
+                    upgradeButtons[i].gameObject.SetActive(false);
+                }
+            }
+
+            Debug.Log($"顯示升級面板，提供 {numOptionsToDisplay} 個選項，遊戲已暫停。");
+        }
+        else
+        {
+            Debug.LogWarning("UIManager: Upgrade Panel 未設定！無法顯示。");
+        }
+    }
+
+    public void HideUpgradePanel() // 這個方法由 UpgradeButtonUI 呼叫
     {
         if (upgradePanel != null)
         {
@@ -97,17 +163,5 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1f; // 關閉面板時恢復遊戲
             Debug.Log("UIManager: 隱藏升級面板，遊戲已恢復。");
         }
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -74,7 +74,7 @@ public class ExperienceOrb : MonoBehaviour
         // 計算朝向玩家的方向
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         // 計算位移
-        Vector2 displacement = direction * moveSpeed * Time.deltaTime;
+        Vector2 displacement = direction * moveSpeed * Time.fixedDeltaTime;
         
         rb.MovePosition(rb.position + displacement);
     }
