@@ -170,6 +170,7 @@ MonoBehaviour:
   enemiesToSpawn:
   - {fileID: 11400000, guid: ac69cedd072f95f42a1025c5810a854e, type: 2}
   - {fileID: 11400000, guid: 2388ec771e9cd9849aa4abd81f88f60c, type: 2}
+  - {fileID: 11400000, guid: 3045444622c20904595c2c97bf6f421b, type: 2}
   spawnMinX: -20
   spawnMaxX: 20
   spawnMinY: -20
@@ -1445,7 +1446,7 @@ PrefabInstance:
     - target: {fileID: 1887032218256087815, guid: 717609187e087514cabbc68d8c4d865e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6741497636757098322, guid: 717609187e087514cabbc68d8c4d865e,
         type: 3}
