@@ -57,6 +57,7 @@
 # node_modules   - not suppressed by the rule below
 # a/.folder      - not suppressed by the rule below
 .[^.]*/
+!.github/
 
 # Builds #
 #--------#
