@@ -38,7 +38,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
-          scriptingBackend: Mono
+          customImage: unityci/editor:windows-2022.3.6f1-windows-mono-3
 
       # Upload build artifacts
       - name: Upload build artifacts
