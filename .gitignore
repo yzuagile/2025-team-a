@@ -30,6 +30,7 @@
 *.sln.user
 *.suo
 *.tmp
+*.sln
 *.user
 *.userprefs
 *.pidb
