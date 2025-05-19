@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1887032218256087815, guid: 717609187e087514cabbc68d8c4d865e, type: 3}
   enemyName: New Enemy
-  maxHealth: 10
+  maxHealth: 50
   movementSpeed: 2
-  contactDamage: 5
+  contactDamage: 50
   experienceDropped: 10
