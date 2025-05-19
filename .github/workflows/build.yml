@@ -1,4 +1,4 @@
-name: Build Unity Project
+name: CI
 
 on:
   push:
