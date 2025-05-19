@@ -39,7 +39,6 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           buildName: TeamA
-          buildMethod: UnityBuilder.Build
 
       # Upload build artifacts
       - name: Upload build artifacts
