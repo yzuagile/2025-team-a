@@ -44,7 +44,7 @@ jobs:
         with:
           name: Unity Tests
           path: test-results
-          reporter: junit
+          reporter: nunit
 
       - name: Upload Test Results (artifact)
         if: always()
