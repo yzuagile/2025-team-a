@@ -43,7 +43,7 @@ jobs:
         uses: dorny/test-reporter@v2
         with:
           name: Unity Tests
-          path: test-results
+          path: test-results/**/*.xml
           reporter: dotnet-nunit
 
       - name: Upload Test Results (artifact)
