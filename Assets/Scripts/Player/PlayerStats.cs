@@ -36,6 +36,8 @@ public class PlayerStats : MonoBehaviour
     private PlayerMovements playerMovements;
     private UIManager uiManager;
 
+   
+
     void Awake()
     {
         playerMovements = GetComponent<PlayerMovements>();
@@ -90,6 +92,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log($"PlayerStats: 玩家受到 {damage} 點傷害, 剩餘 HP: {currentHealth}");
 
         // --- 更新 UI ---
+
         uiManager?.UpdateHealthUI(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
