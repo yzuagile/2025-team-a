@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 [RequireComponent(typeof(PlayerMovements))]
 public class PlayerStats : MonoBehaviour
@@ -11,33 +10,32 @@ public class PlayerStats : MonoBehaviour
     public int currentExp = 1;
     public int expToNextLevel = 100;
     public float levelExpMultiplier = 1.5f;
-
+    
     [Header("Player Health")]
     public float currentHealth;
     public float maxHealth = 100f;
 
-    [Header("Player Attack")]
+    [Header("Player Attack")] 
     public float baseAttackDamage = 10f;
     public float baseProjectileSpeed = 8f;
     public float attackInterval = 1.0f; // 每次攻擊的間隔時間 (秒)
     public int projectilesPerShot = 1; // 一次發射多少個彈幕
     public float attackRange = 10f; // 武器索敵範圍
-
+    
     [Header("Player Movement")]
     public float baseMoveSpeed = 5f;
-
+    
     [Header("Player Pickup")]
     public float pickupRadius = 1.5f;
-
-    [Header("Upgrade Option")]
-    public List<UpgradeOptionData> availableUpgrades; // 所有可用的升級選項 Data Assets
-    public int upgradesToShowPerLevel = 3; // 每次升級顯示幾個選項
-
+    
     private PlayerMovements playerMovements;
     private UIManager uiManager;
 
+    public GameObject gameOverPanel; // Assign in Inspector
+
     void Awake()
     {
+        // 初始化移動組件
         playerMovements = GetComponent<PlayerMovements>();
         if (playerMovements != null)
         {
@@ -47,34 +45,55 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.LogError("PlayerStats: 找不到 PlayerMovements 組件！");
         }
-
-        currentHealth = maxHealth;
-    }
-
-    void InitializeUI()
-    {
+        
         uiManager = UIManager.instance;
         if (uiManager == null)
         {
             Debug.LogError("PlayerStats: 找不到 UIManager 實例！UI 可能無法更新。");
-            return;
         }
-
-        uiManager.UpdateHealthUI(currentHealth, maxHealth);
-        uiManager.UpdateExperienceUI(currentExp, expToNextLevel);
-        uiManager.UpdateLevelText(currentLevel);
+        // 設定初始血量
+	currentHealth = maxHealth;
+        uiManager?.UpdateHealthUI(currentHealth, maxHealth);
+        uiManager?.UpdateHealthUI(currentExp, expToNextLevel);
+        uiManager?.UpdateLevelText(currentLevel);
     }
-
+    
+    void InitializeUI()
+    {
+        if (uiManager != null)
+        {
+            uiManager.UpdateHealthUI(currentHealth, maxHealth);
+            uiManager.UpdateExperienceUI(currentExp, expToNextLevel);
+            uiManager.UpdateLevelText(currentLevel);
+        }
+        else
+        {
+            Debug.LogError("PlayerStats: Awake 時 UIManager 未就緒！");
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         InitializeUI();
+	// 嘗試取得 UIManager 實例
+        uiManager = UIManager.instance;
+        if (uiManager == null)
+        {
+            Debug.LogError("PlayerStats: Start 時找不到 UIManager 實例！");
+        }
+        
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false); // 開始時關閉死亡面板
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // 可擴充 Update 行為
     }
 
     public float GetPlayerAttackDamage() { return baseAttackDamage; }
@@ -88,9 +107,10 @@ public class PlayerStats : MonoBehaviour
             return;
         currentHealth -= damage;
         Debug.Log($"PlayerStats: 玩家受到 {damage} 點傷害, 剩餘 HP: {currentHealth}");
-
+        
         // --- 更新 UI ---
         uiManager?.UpdateHealthUI(currentHealth, maxHealth);
+
         if (currentHealth <= 0)
         {
             Die();
@@ -101,9 +121,18 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("PlayerStats: 玩家死亡！");
         GetComponent<PlayerMovements>().enabled = false;
-        if (GetComponent<PlayerAttackController>() != null)
-        {
+        if (GetComponent<PlayerAttackController>() != null) {
             GetComponent<PlayerAttackController>().enabled = false;
+        }
+	PlayerAttackController attackController = GetComponent<PlayerAttackController>();
+        if (attackController != null)
+        {
+            attackController.enabled = false;
+        }
+
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
         }
     }
 
@@ -111,13 +140,14 @@ public class PlayerStats : MonoBehaviour
     {
         currentExp += amount;
         Debug.Log($"PlayerStats: 獲得 {amount} 經驗, 當前經驗: {currentExp}/{expToNextLevel}");
+
         bool leveledUp = false;
         while (currentExp >= expToNextLevel)
         {
-            LevelUp();
+            LuvelUp();
             leveledUp = true;
         }
-
+        
         // --- 更新 UI ---
         if (!leveledUp)
         {
@@ -130,9 +160,9 @@ public class PlayerStats : MonoBehaviour
         currentLevel++;
         currentExp -= expToNextLevel;
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
-
+        
         Debug.Log($"PlayerStats: 升級到 Lv. {currentLevel}! 下一級需要 {expToNextLevel} 經驗。");
-
+        
         //  更新UI
         uiManager?.UpdateExperienceUI(currentExp, expToNextLevel);
         uiManager?.UpdateLevelText(currentLevel);
