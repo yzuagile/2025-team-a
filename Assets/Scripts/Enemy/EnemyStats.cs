@@ -38,7 +38,7 @@ public class EnemyStats : MonoBehaviour
     public float GetBaseMovementSpeed() { return enemyData != null ? enemyData.movementSpeed : 0f; }
     public float GetContactDamage() { return enemyData != null ? enemyData.contactDamage : 0f; }
     public int GetExperienceDropped() { return enemyData != null ? enemyData.experienceDropped : 0; }
-    private bool isDead = false;
+    
 
     private GameObject[] skeleton;
     // Start is called before the first frame update
