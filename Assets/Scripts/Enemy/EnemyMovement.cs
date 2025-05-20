@@ -63,9 +63,10 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
-        if (isDead)
+        if (!enemyStats.canMove || enemyStats.currentHealth <= 0)
         {
-            moveSpeed= 0f;
+            rb.velocity = Vector2.zero; // 確保完全停止
+            return;
         }
         Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
 

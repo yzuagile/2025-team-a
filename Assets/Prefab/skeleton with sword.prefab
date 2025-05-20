@@ -61,17 +61,17 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: 8889158ec959514479a7036c66a835a6,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 8889158ec959514479a7036c66a835a6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 8889158ec959514479a7036c66a835a6,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 8889158ec959514479a7036c66a835a6,
         type: 3}
@@ -391,6 +391,9 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 3045444622c20904595c2c97bf6f421b, type: 2}
   currentHealth: 0
   currentMovementSpeed: 0
+  canMove: 1
+  projectilesPerShot: 1
+  attackInterval: 1
   experienceOrbPrefab: {fileID: 4188602671250987629, guid: f7470c92ce038f7419eed27aad32721e,
     type: 3}
   isPlayerInRange: 0

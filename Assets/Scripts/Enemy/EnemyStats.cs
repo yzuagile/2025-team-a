@@ -9,9 +9,13 @@ public class EnemyStats : MonoBehaviour
     
     [HideInInspector] public float currentHealth;
     [HideInInspector] public float currentMovementSpeed;
-    
-    public GameObject experienceOrbPrefab;
+    [HideInInspector] public bool canMove = true;
 
+    public int projectilesPerShot = 1;
+    public float attackInterval = 1.0f; // 每次攻擊的間隔時間 (秒)
+
+    public GameObject experienceOrbPrefab;
+    
     private Animator animator;
     public bool isPlayerInRange = false;
 
@@ -76,6 +80,7 @@ public class EnemyStats : MonoBehaviour
 
     public void die()
     {
+
         Debug.Log($"EnemyStats: {enemyData.enemyName} ({gameObject.name}) 死亡！");
         if (experienceOrbPrefab != null && enemyData != null)
         {
@@ -86,6 +91,7 @@ public class EnemyStats : MonoBehaviour
         }
         if (CompareTag("skeleton"))
         {
+            canMove = false;
             StartCoroutine(DieWithAnimation());
         }
         else
@@ -96,10 +102,10 @@ public class EnemyStats : MonoBehaviour
     private IEnumerator DieWithAnimation()
     {
         animator.SetBool("isDead", true);
-
+        
         // 播放死亡動畫（假設動畫名稱是 "Die"）
         animator.Play("Death Skeleton with sword");
-
+        
         // 等待動畫時間，這裡假設動畫長度是 1 秒
         yield return new WaitForSeconds(1f);
 
