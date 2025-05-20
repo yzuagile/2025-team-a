@@ -36,7 +36,7 @@ public class PlayerStats : MonoBehaviour
     private PlayerMovements playerMovements;
     private UIManager uiManager;
 
-   
+    public GameObject gameOverPanel; // Assign in Inspector
 
     void Awake()
     {
@@ -92,7 +92,6 @@ public class PlayerStats : MonoBehaviour
         Debug.Log($"PlayerStats: 玩家受到 {damage} 點傷害, 剩餘 HP: {currentHealth}");
 
         // --- 更新 UI ---
-
         uiManager?.UpdateHealthUI(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
