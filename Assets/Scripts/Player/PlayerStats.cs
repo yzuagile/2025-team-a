@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("Player Level")]
     public int currentLevel = 1;
-    public int currentExp = 1;
+    public int currentExp = 0;
     public int expToNextLevel = 100;
     public float levelExpMultiplier = 1.5f;
 
@@ -16,7 +16,9 @@ public class PlayerStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth = 100f;
 
+    private Animator animator;
     [Header("Player Attack")]
+
     public float baseAttackDamage = 10f;
     public float baseProjectileSpeed = 8f;
     public float attackInterval = 1.0f; // 每次攻擊的間隔時間 (秒)
@@ -34,12 +36,19 @@ public class PlayerStats : MonoBehaviour
     public int upgradesToShowPerLevel = 3; // 每次升級顯示幾個選項
 
     private PlayerMovements playerMovements;
+
     private UIManager uiManager;
 
     public GameObject gameOverPanel; // Assign in Inspector
 
+    public GameObject Levelup;
+    public Transform PlayerPosition;
+
     void Awake()
     {
+        animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
+
         playerMovements = GetComponent<PlayerMovements>();
         if (playerMovements != null)
         {
@@ -101,6 +110,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Die()
     {
+        animator.SetBool("IsDie", true);
         Debug.Log("PlayerStats: 玩家死亡！");
         GetComponent<PlayerMovements>().enabled = false;
         if (GetComponent<PlayerAttackController>() != null)

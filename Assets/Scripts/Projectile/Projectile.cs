@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     private BoxCollider2D collider;
     
     private Transform target;
-    
+    public GameObject hitEffect;
     private float moveSpeed;
     private float damage;
     private float lifetime  = 5f;
@@ -68,8 +68,10 @@ public class Projectile : MonoBehaviour
         if (enemyStats != null)
         {
             enemyStats.TakeDamage(damage);
-            
+            GameObject hit = Instantiate(hitEffect, enemyStats.transform.position, Quaternion.identity);
             Destroy(gameObject);
+            Destroy(hit, 0.5f);
+          
         }
     }
 }
