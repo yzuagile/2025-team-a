@@ -35,7 +35,7 @@ public class PlayerMovements : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+       
         Vector2 displacement = movementInput.normalized * movementSpeed * Time.fixedDeltaTime;
         Vector2 targetPosition = rb.position + displacement;
         targetPosition.x = Mathf.Clamp(targetPosition.x, minX, maxX);
