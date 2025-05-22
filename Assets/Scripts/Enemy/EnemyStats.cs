@@ -92,6 +92,7 @@ public class EnemyStats : MonoBehaviour
         if (CompareTag("skeleton"))
         {
             canMove = false;
+            gameObject.tag = "Untagged";
             StartCoroutine(DieWithAnimation());
         }
         else
