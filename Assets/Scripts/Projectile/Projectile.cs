@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
     {
         if (target == null || !target.gameObject.activeInHierarchy)
         {
-            Vector2 currentMovement = transform.right * moveSpeed * Time.fixedDeltaTime;
+            Vector2 currentMovement = transform.up * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + currentMovement);
             target = null;
             return;

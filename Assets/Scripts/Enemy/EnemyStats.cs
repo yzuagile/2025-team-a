@@ -13,6 +13,8 @@ public class EnemyStats : MonoBehaviour
 
     public int projectilesPerShot = 1;
     public float attackInterval = 1.0f; // 每次攻擊的間隔時間 (秒)
+
+    public GameObject experienceOrbPrefab;
     
     private Animator animator;
     public bool isPlayerInRange = false;
@@ -28,6 +30,11 @@ public class EnemyStats : MonoBehaviour
         {
             Debug.LogError($"EnemyData 未在 {gameObject.name} 上設定！");
             currentHealth = 1f;
+        }
+
+        if (experienceOrbPrefab == null)
+        {
+            Debug.LogError($"EnemyStates:　經驗球 Prefab 未在 {gameObject.name} 的 EnemyStats 上設定！將無法掉落經驗。");
         }
     }
     
@@ -65,22 +72,34 @@ public class EnemyStats : MonoBehaviour
         if (enemyData == null || currentHealth <= 0) return;
         
         currentHealth -= damage;
+        
         if (currentHealth <= 0)
         {
-            Die();
+            die();
         }
     }
 
-    public void Die()
+    public void die()
     {
-        if (enemyData == null) {
-            Debug.LogError($"EnemyStats: {gameObject.name} 的 EnemyData 為空，無法觸發死亡事件！");
-            Destroy(gameObject); // 仍然銷毀，避免卡住
-            return;
+
+        Debug.Log($"EnemyStats: {enemyData.enemyName} ({gameObject.name}) 死亡！");
+        if (experienceOrbPrefab != null && enemyData != null)
+        {
+            GameObject orbGO  = Instantiate(experienceOrbPrefab, transform.position, Quaternion.identity);
+            ExperienceOrb orbScript = orbGO.GetComponent<ExperienceOrb>();
+            if (orbScript != null)
+                orbScript.SetExperience(GetExperienceDropped());
         }
-        
-        GameEventManager.TriggerEnemyDied(gameObject, transform.position, enemyData);
-        Destroy(gameObject);
+        if (CompareTag("skeleton"))
+        {
+            canMove = false;
+            gameObject.tag = "Untagged";
+            StartCoroutine(DieWithAnimation());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     private IEnumerator DieWithAnimation()
     {

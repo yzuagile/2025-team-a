@@ -10,10 +10,10 @@ public class PlayerTest
     {
         public bool dieCalled = false;
 
-        public void Die()
+        public override void Die()
         {
             dieCalled = true;
-            base.Die(); // ï¿½iï¿½ï¿½Gï¿½Oï¿½dï¿½ì¥»ï¿½æ¬°ï¿½Aï¿½Î®ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ flag
+            base.Die(); // ¥i¿ï¡G«O¯d­ì¥»¦æ¬°¡A©Î®³±¼¥u´ú¸Õ flag
         }
     }
 
