@@ -35,10 +35,19 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           customImage: unityci/editor:ubuntu-2022.3.6f1-windows-mono-3.0.1
-          testMode: all # 或 editmode / playmode 看你需要的測試類型
+          testMode: all      # all / editmode / playmode
           artifactsPath: test-results
 
-      - name: Upload Test Results
+      - name: Publish Unity Test Report
+        if: always()       # 即使測試失敗也要發佈報告
+        uses: dorny/test-reporter@v2
+        with:
+          name: Unity Tests
+          path: test-results/**/*.xml
+          reporter: dotnet-nunit
+
+      - name: Upload Test Results (artifact)
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Test Results

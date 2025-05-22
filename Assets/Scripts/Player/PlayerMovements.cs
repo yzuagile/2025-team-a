@@ -35,11 +35,21 @@ public class PlayerMovements : MonoBehaviour
 
     void FixedUpdate()
     {
-       
+
+        if (movementInput.x != 0)
+        {
+            // 設定角色的 Y 軸旋轉為 180 或 0 度（取決於左右移動）
+            float rotationY = movementInput.x > 0 ? 0 : 180;  // 向右時 rotationY = 0，向左時 rotationY = 180
+            transform.rotation = Quaternion.Euler(0, rotationY, 0); // 設定新的旋轉
+        }
+
+
+
         Vector2 displacement = movementInput.normalized * movementSpeed * Time.fixedDeltaTime;
         Vector2 targetPosition = rb.position + displacement;
         targetPosition.x = Mathf.Clamp(targetPosition.x, minX, maxX);
         targetPosition.y = Mathf.Clamp(targetPosition.y, minY, maxY);
+        animator.SetFloat("Speed", movementInput.sqrMagnitude);
         rb.MovePosition(targetPosition);
     }
 
