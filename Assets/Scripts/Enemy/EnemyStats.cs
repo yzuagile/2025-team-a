@@ -72,6 +72,7 @@ public class EnemyStats : MonoBehaviour
         if (enemyData == null || currentHealth <= 0) return;
         
         currentHealth -= damage;
+        
         if (currentHealth <= 0)
         {
             die();
