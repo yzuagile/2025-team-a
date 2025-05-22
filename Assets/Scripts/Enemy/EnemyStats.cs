@@ -13,8 +13,6 @@ public class EnemyStats : MonoBehaviour
 
     public int projectilesPerShot = 1;
     public float attackInterval = 1.0f; // 每次攻擊的間隔時間 (秒)
-
-    public GameObject experienceOrbPrefab;
     
     private Animator animator;
     public bool isPlayerInRange = false;
@@ -30,11 +28,6 @@ public class EnemyStats : MonoBehaviour
         {
             Debug.LogError($"EnemyData 未在 {gameObject.name} 上設定！");
             currentHealth = 1f;
-        }
-
-        if (experienceOrbPrefab == null)
-        {
-            Debug.LogError($"EnemyStates:　經驗球 Prefab 未在 {gameObject.name} 的 EnemyStats 上設定！將無法掉落經驗。");
         }
     }
     
@@ -74,30 +67,20 @@ public class EnemyStats : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            die();
+            Die();
         }
     }
 
-    public void die()
+    public void Die()
     {
-
-        Debug.Log($"EnemyStats: {enemyData.enemyName} ({gameObject.name}) 死亡！");
-        if (experienceOrbPrefab != null && enemyData != null)
-        {
-            GameObject orbGO  = Instantiate(experienceOrbPrefab, transform.position, Quaternion.identity);
-            ExperienceOrb orbScript = orbGO.GetComponent<ExperienceOrb>();
-            if (orbScript != null)
-                orbScript.SetExperience(GetExperienceDropped());
+        if (enemyData == null) {
+            Debug.LogError($"EnemyStats: {gameObject.name} 的 EnemyData 為空，無法觸發死亡事件！");
+            Destroy(gameObject); // 仍然銷毀，避免卡住
+            return;
         }
-        if (CompareTag("skeleton"))
-        {
-            canMove = false;
-            StartCoroutine(DieWithAnimation());
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
+        GameEventManager.TriggerEnemyDied(gameObject, transform.position, enemyData);
+        Destroy(gameObject);
     }
     private IEnumerator DieWithAnimation()
     {

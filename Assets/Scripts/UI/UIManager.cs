@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance; // 簡化版靜態變數
+    public static UIManager instance;
 
     [Header("狀態顯示 UI 元素")]
     public Slider healthSlider;
@@ -15,9 +15,9 @@ public class UIManager : MonoBehaviour
 
     [Header("升級選項面板")]
     public GameObject upgradePanel;
-    public List<UpgradeButtonUI> upgradeButtons; // 存放面板中所有升級按鈕的引用
+    public List<UpgradeButtonUI> upgradeButtons;
 
-    private PlayerStats playerStats; // 引用 PlayerStats，方便在關閉面板時通知
+    private PlayerStats playerStats;
 
     void Awake()
     {
@@ -96,6 +96,7 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogError("UIManager: 找不到 PlayerStats！部分功能可能異常。");
         }
+        upgradePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -157,11 +158,48 @@ public class UIManager : MonoBehaviour
 
     public void HideUpgradePanel() // 這個方法由 UpgradeButtonUI 呼叫
     {
-        if (upgradePanel != null)
+        if (upgradePanel != null && upgradePanel.activeInHierarchy) // 確保只在面板可見時執行
         {
             upgradePanel.SetActive(false);
-            Time.timeScale = 1f; // 關閉面板時恢復遊戲
-            Debug.Log("UIManager: 隱藏升級面板，遊戲已恢復。");
+            // Debug.Log("UIManager: 隱藏升級面板。"); // 移到 GameStateManager
+
+            // --- 通知 GameStateManager 退出升級狀態 ---
+            if (GameStateManager.instance != null)
+            {
+                GameStateManager.instance.ExitLevelUpState(); // 這會處理 Time.timeScale = 1f;
+            }
+            else
+            {
+                Debug.LogError("UIManager: 找不到 GameStateManager 實例！遊戲可能不會恢復。");
+                Time.timeScale = 1f; // 緊急恢復時間
+            }
+            // ----------------------------------------
+        }
+    }
+    
+    void OnEnable()
+    {
+        GameEventManager.OnPlayerHealthChanged += HandlePlayerHealthChanged;
+    }
+
+    void OnDisable()
+    {
+        GameEventManager.OnPlayerHealthChanged -= HandlePlayerHealthChanged;
+    }
+
+    private void HandlePlayerHealthChanged(PlayerHealthEventArgs args)
+    {
+        UpdateHealthUI(args.currentHealth, args.maxHealth);
+        
+        if (args.type == HealthChangeType.Damage)
+        {
+            Debug.Log($"UIManager: 玩家受到 {args.absoluteAmount} 傷害。");
+            // 在這裡顯示傷害特效、聲音等
+        }
+        else if (args.type == HealthChangeType.Heal)
+        {
+            Debug.Log($"UIManager: 玩家恢復了 {args.absoluteAmount} 生命。");
+            // 在這裡顯示治療特效、聲音等
         }
     }
 }
