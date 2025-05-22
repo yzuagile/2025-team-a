@@ -2,11 +2,9 @@ name: Build Unity Project
 
 on:
   workflow_run:
-    workflows: ["Run Unity Tests"] # This must match the name in test.yml
+    workflows: ["Run Unity Tests"]
     types:
       - completed
-    branches: # Optional: only run for pushes/PRs to these branches
-      - main
 
 jobs:
   build:
