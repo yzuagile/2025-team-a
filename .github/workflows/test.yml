@@ -1,0 +1,54 @@
+name: Run Unity Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Unity Tests # This name is important for the build.yml trigger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Cache Library folder
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-test-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-test-
+
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          customImage: unityci/editor:ubuntu-2022.3.6f1-windows-mono-3.0.1
+          testMode: all
+          artifactsPath: test-results
+
+      - name: Publish Unity Test Report
+        if: always()
+        uses: dorny/test-reporter@v2
+        with:
+          name: Unity Tests
+          path: test-results/**/*.xml
+          reporter: dotnet-nunit
+
+      - name: Upload Test Results (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test Results
+          path: test-results
