@@ -5354,10 +5354,7 @@ MonoBehaviour:
   expSlider: {fileID: 1174526641}
   levelText: {fileID: 529741232}
   upgradePanel: {fileID: 1237927446}
-  upgradeButtons:
-  - {fileID: 226765733}
-  - {fileID: 1426773567}
-  - {fileID: 1042243278}
+  upgradeButtons: [{fileID: 226765733}, {fileID: 1426773567}, {fileID: 1042243278}]
 --- !u!4 &1721498773
 Transform:
   m_ObjectHideFlags: 0

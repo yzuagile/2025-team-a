@@ -108,7 +108,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         animator.SetBool("IsDie", true);
         Debug.Log("PlayerStats: 玩家死亡！");

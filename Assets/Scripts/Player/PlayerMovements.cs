@@ -1,37 +1,38 @@
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+    
 public class PlayerMovements : MonoBehaviour
 {
     public float movementSpeed = 5f;
-
+    
     public float minX = -25;
     public float maxX = 25;
     public float minY = -20;
     public float maxY = 30;
-
+    
     private Rigidbody2D rb;
     private Vector2 movementInput;
     private Animator animator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void FixedUpdate()
@@ -59,7 +60,7 @@ public class PlayerMovements : MonoBehaviour
         // Debug.Log("onMove");
         movementInput = value.Get<Vector2>();
     }
-
+    
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green; // 設定 Gizmo 顏色
