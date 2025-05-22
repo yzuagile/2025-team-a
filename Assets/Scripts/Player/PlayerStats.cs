@@ -99,7 +99,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log("PlayerStats: 玩家死亡！");
         GetComponent<PlayerMovements>().enabled = false;
