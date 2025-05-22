@@ -39,6 +39,7 @@ public class PlayerTest
         var obj = new GameObject();
         obj.AddComponent<Rigidbody2D>();
         obj.AddComponent<PlayerMovements>();
+        obj.AddComponent<Animator>();
         TestPlayerStats player = obj.AddComponent<TestPlayerStats>();
         player.maxHealth = 100f;
         player.currentHealth = 10f;
