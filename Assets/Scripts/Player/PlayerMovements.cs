@@ -15,10 +15,12 @@ public class PlayerMovements : MonoBehaviour
     
     private Rigidbody2D rb;
     private Vector2 movementInput;
+    private Animator animator;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     
     // Start is called before the first frame update
