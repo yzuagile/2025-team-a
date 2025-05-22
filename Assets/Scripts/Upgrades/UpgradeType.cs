@@ -1,30 +1,30 @@
-// Scripts/Upgrades/UpgradeType.cs (©ÎÃþ¦ü¸ô®|)
+// Scripts/Upgrades/UpgradeType.cs (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½|)
 public enum UpgradeType
 {
-    // ª±®a°òÂ¦ÄÝ©Ê
+    // ï¿½ï¿½ï¿½aï¿½ï¿½Â¦ï¿½Ý©ï¿½
     IncreaseMaxHealth,
     IncreaseMovementSpeed,
     IncreasePickupRadius,
-    IncreaseExperienceGain, // ¼W¥[¸gÅçÀò¨ú¦Ê¤À¤ñ
-    IncreaseArmor, // ¼W¥[Å@¥Ò/´î¶Ë
+    IncreaseExperienceGain, // ï¿½Wï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½
+    IncreaseArmor, // ï¿½Wï¿½[ï¿½@ï¿½ï¿½/ï¿½ï¿½ï¿½
 
-    // ªZ¾¹ÄÝ©Ê (¥i¥H§ó²Ó¤À¡A¨Ò¦p°w¹ï¯S©wªZ¾¹)
+    // ï¿½Zï¿½ï¿½ï¿½Ý©ï¿½ (ï¿½iï¿½Hï¿½ï¿½Ó¤ï¿½ï¿½Aï¿½Ò¦pï¿½wï¿½ï¿½Sï¿½wï¿½Zï¿½ï¿½)
     IncreaseAttackDamage,
     IncreaseProjectileSpeed,
-    DecreaseAttackInterval, // ¼W¥[§ðÀ»³t«× (´î¤Ö§ðÀ»¶¡¹j)
+    DecreaseAttackInterval, // ï¿½Wï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ (ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½j)
     IncreaseProjectilesPerShot,
-    IncreaseAttackRange,    // ¼W¥[ªZ¾¹¯Á¼Ä/¦³®Ä½d³ò
-    IncreaseProjectilePierce, // ¼W¥[¼u¹õ¬ï³z¦¸¼Æ
+    IncreaseAttackRange,    // ï¿½Wï¿½[ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½Ä½dï¿½ï¿½
+    IncreaseProjectilePierce, // ï¿½Wï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½zï¿½ï¿½ï¿½ï¿½
     IncreaseCriticalHitChance,
     IncreaseCriticalHitDamage,
-    IncreaseAreaOfEffect, // ¼W¥[®ÄªG½d³ò (¨Ò¦p¬Y¨Ç½d³òªZ¾¹)
+    IncreaseAreaOfEffect, // ï¿½Wï¿½[ï¿½ÄªGï¿½dï¿½ï¿½ (ï¿½Ò¦pï¿½Yï¿½Ç½dï¿½ï¿½Zï¿½ï¿½)
 
-    // ¨ä¥L¯S®í®ÄªG
-    GainNewWeapon, // Àò¨ú·sªZ¾¹
-    EvolveWeapon, // ¶i¤ÆªZ¾¹
+    // ï¿½ï¿½Lï¿½Sï¿½ï¿½ï¿½ÄªG
+    GainNewWeapon, // ï¿½ï¿½ï¿½ï¿½sï¿½Zï¿½ï¿½
+    EvolveWeapon, // ï¿½iï¿½ÆªZï¿½ï¿½
     SpecialAbility_Dash,
     SpecialAbility_Shield,
 
-    // (§ó¦h§A·Q­nªºÃþ«¬...)
-    None // ¥NªíµL©Î¥¼©w¸q
+    // (ï¿½ï¿½hï¿½Aï¿½Qï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...)
+    None // ï¿½Nï¿½ï¿½ï¿½Lï¿½Î¥ï¿½ï¿½wï¿½q
 }
