@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
     public int currentExp = 0;
     public int expToNextLevel = 100;
     public float levelExpMultiplier = 1.5f;
+    public GameObject LeveLupAnimation;
 
     [Header("Player Health")]
     public float currentHealth;
@@ -41,8 +42,8 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject gameOverPanel; // Assign in Inspector
 
-    public GameObject Levelup;
-    public Transform PlayerPosition;
+    
+ 
 
     void Awake()
     {
@@ -148,6 +149,9 @@ public class PlayerStats : MonoBehaviour
     void LevelUp()
     {
         currentLevel++;
+        GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
+        Levelupeffect.transform.SetParent(transform);
+        Destroy(Levelupeffect, 2.02f);
         currentExp -= expToNextLevel;
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
 
