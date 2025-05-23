@@ -1,4 +1,4 @@
-name: Run Unity Tests
+name: CI
 
 on:
   push:
