@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+using UnityEngine.SceneManagement; // 放在最上面
 [RequireComponent(typeof(PlayerMovements))]
 public class PlayerStats : MonoBehaviour
 {
@@ -145,7 +146,12 @@ public class PlayerStats : MonoBehaviour
             uiManager?.UpdateExperienceUI(currentExp, expToNextLevel);
         }
     }
-
+    public void RestartGame()
+    {
+        Debug.Log("Restart 被按了！");
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name); // 重新加載目前場景
+    }
     void LevelUp()
     {
         currentLevel++;
