@@ -1,15 +1,15 @@
-name: Build Unity Project
+name: CI-Build
 
 on:
   workflow_run:
-    workflows: ["Run Unity Tests"]
+    workflows: ["CI-Test"]
     types:
       - completed
 
 jobs:
   build:
     name: Build Unity Project
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} # Only run if the 'Run Unity Tests' workflow succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }} 
     runs-on: ubuntu-latest
 
     steps:
