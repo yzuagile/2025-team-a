@@ -24,9 +24,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: Library
-          key: Library-test-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          key: Library-CI-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-test-
+            Library-CI-
 
       - name: Run tests
         uses: game-ci/unity-test-runner@v4
@@ -53,3 +53,8 @@ jobs:
         with:
           name: Test Results
           path: test-results
+
+  call-build:
+    needs: test      # 確保測試完成後才執行
+    if: success()    # 只在測試成功時執行
+    uses: ./.github/workflows/build.yml    # 呼叫建置工作流程
