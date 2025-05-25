@@ -1,7 +1,7 @@
 name: CI-Build
 
 on:
-  workflow_run:
+  workflow_call:
   workflow_dispatch:    # 加入這行來允許手動觸發
 
 jobs:
