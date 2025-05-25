@@ -2,6 +2,13 @@ name: CI-Build
 
 on:
   workflow_call:
+    secrets:
+      UNITY_LICENSE:
+        required: true
+      UNITY_EMAIL:
+        required: true
+      UNITY_PASSWORD:
+        required: true    
   workflow_dispatch:    # 加入這行來允許手動觸發
 
 jobs:

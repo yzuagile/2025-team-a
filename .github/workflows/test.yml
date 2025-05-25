@@ -58,3 +58,7 @@ jobs:
     needs: test      # 確保測試完成後才執行
     if: success()    # 只在測試成功時執行
     uses: ./.github/workflows/build.yml    # 呼叫建置工作流程
+    secrets:
+      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      UNITY_EMAIL:   ${{ secrets.UNITY_EMAIL }}
+      UNITY_PASSWORD:${{ secrets.UNITY_PASSWORD }}    
