@@ -48,13 +48,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Coverage Results
-          path: test-results/*/coverage/
+          path: CodeCoverage/
 
       - name: Generate Coverage Summary
         if: always()
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          filename: test-results/*/coverage/coverage.xml
+          filename: CodeCoverage/*/coverage.xml
           badge: true
           format: 'markdown'
           output: 'both'
