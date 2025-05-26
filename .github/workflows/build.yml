@@ -33,7 +33,7 @@ jobs:
           customImage: unityci/editor:ubuntu-2022.3.6f1-windows-mono-3.0.1
           testMode: all      # all / editmode / playmode
           artifactsPath: test-results
-          coverageOptions: 'generateAdditionalReports=true'
+          coverageOptions:  'generateHtmlReport;generateAdditionalReports'
 
       - name: Publish Unity Test Report
         if: always()       # 即使測試失敗也要發佈報告
@@ -54,10 +54,10 @@ jobs:
         if: always()
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          filename: CodeCoverage/*/coverage.xml
+          filename: CodeCoverage/Report/coverage.cobertura.xml  
           badge: true
-          format: 'markdown'
-          output: 'both'
+          format: markdown
+          output: both
 
       - name: Upload Test Results (artifact)
         if: always()
@@ -70,6 +70,7 @@ jobs:
     name: Build Unity Project
     runs-on: ubuntu-latest
     needs: test # 確保只有測試成功才會 build
+    if: ${{ needs.test.result == 'success' }}   # 只有測試成功時才執行 build
 
     steps:
       # Checkout repository
