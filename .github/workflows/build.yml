@@ -33,6 +33,7 @@ jobs:
           customImage: unityci/editor:ubuntu-2022.3.6f1-windows-mono-3.0.1
           testMode: all      # all / editmode / playmode
           artifactsPath: test-results
+          coverageOptions: 'generateAdditionalReports=true'
 
       - name: Publish Unity Test Report
         if: always()       # 即使測試失敗也要發佈報告
@@ -41,6 +42,22 @@ jobs:
           name: Unity Tests
           path: test-results/**/*.xml
           reporter: dotnet-nunit
+
+      - name: Upload Coverage Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Coverage Results
+          path: test-results/*/coverage/
+
+      - name: Generate Coverage Summary
+        if: always()
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: test-results/*/coverage/coverage.xml
+          badge: true
+          format: 'markdown'
+          output: 'both'
 
       - name: Upload Test Results (artifact)
         if: always()
