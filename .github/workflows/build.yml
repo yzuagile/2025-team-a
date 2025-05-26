@@ -36,8 +36,9 @@ jobs:
         with:
           customImage: unityci/editor:ubuntu-2022.3.6f1-windows-mono-3.0.1
           testMode: all      # all / editmode / playmode
+          testMode: all
           artifactsPath: test-results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+TeamA'
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;generateXmlReport;assemblyFilters:+TeamA'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Unity Test Report
@@ -62,11 +63,18 @@ jobs:
           name: Code Coverage
           path: CodeCoverage
           
+      - name: Convert Coverage Report
+        if: always()
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xsltproc
+          xsltproc -o coverage-summary.xml CodeCoverage/Report/Summary.xml
+
       - name: Publish Code Coverage Report
         if: always()
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          filename: CodeCoverage/**/coverage.xml
+          filename: coverage-summary.xml
           badge: true
           format: markdown
           output: both
