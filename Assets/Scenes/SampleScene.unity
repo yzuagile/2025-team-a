@@ -1191,6 +1191,41 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 579.6389
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 580.88403
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819733914641613081, guid: 82ff81ec919ec4f74a2b270460c1744f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -268.68402
+      objectReference: {fileID: 0}
     - target: {fileID: 7966610071157906818, guid: 82ff81ec919ec4f74a2b270460c1744f,
         type: 3}
       propertyPath: m_Layer
@@ -4470,10 +4505,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2188c1be7ff1b7543b01e459aeaf00f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 530959134}
-  expSlider: {fileID: 1174526641}
-  levelText: {fileID: 529741232}
-  upgradePanel: {fileID: 1721498771}
+  healthSlider: {fileID: 2131038713}
+  expSlider: {fileID: 709165526}
+  levelText: {fileID: 219076434}
+  upgradePanel: {fileID: 0}
   upgradeButtons: []
 --- !u!4 &1721498773
 Transform:
