@@ -48,21 +48,7 @@ public class PlayerAttackController : MonoBehaviour
             Transform nearestEnemy = FindNearestEnemyOptimized(attackRange);
             if (nearestEnemy != null)
             {
-                for (int i = 0; i < playerStats.GetPlayerProjectilesPerShot(); i++)
-                {
-                    GameObject projectileObj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                    Projectile projectileScript = projectileObj.GetComponent<Projectile>();
-
-                    if (projectileScript != null)
-                    {
-                        projectileScript.Setup(nearestEnemy, currentProjectileSpeed, currentDamage);
-                    }
-                    else
-                    {
-                        Debug.LogError("PlayerAttackController: 生成的物件上沒有 Projectile 腳本！檢查 Prefab 配置。");
-                        Destroy(projectileObj);
-                    }
-                }
+                StartCoroutine(pulls(nearestEnemy, currentProjectileSpeed, currentDamage));
             }
         }
     }
@@ -87,5 +73,25 @@ public class PlayerAttackController : MonoBehaviour
             }
         }
         return nearestEnemy;
+    }
+    IEnumerator pulls(Transform nearestEnemy, float currentProjectileSpeed, float currentDamage)
+    {
+        for (int i = 0; i < playerStats.GetPlayerProjectilesPerShot(); i++)
+        {
+            GameObject projectileObj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Projectile projectileScript = projectileObj.GetComponent<Projectile>();
+
+            if (projectileScript != null)
+            {
+                projectileScript.Setup(nearestEnemy, currentProjectileSpeed, currentDamage);
+            }
+            else
+            {
+                Debug.LogError("PlayerAttackController: 生成的物件上沒有 Projectile 腳本！檢查 Prefab 配置。");
+                Destroy(projectileObj);
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+        
     }
 }
