@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,7 +77,8 @@ public class PlayerAttackController : MonoBehaviour
     }
     IEnumerator pulls(Transform nearestEnemy, float currentProjectileSpeed, float currentDamage)
     {
-        for (int i = 0; i < playerStats.GetPlayerProjectilesPerShot(); i++)
+        for (int i = 0; i < 1+(int)Math.Log(playerStats.GetPlayerLevel(),2); i++)
+        //for (int i = 0; i < playerStats.GetPlayerProjectilesPerShot(); i++)
         {
             GameObject projectileObj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Projectile projectileScript = projectileObj.GetComponent<Projectile>();

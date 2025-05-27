@@ -100,6 +100,7 @@ public class PlayerStats : MonoBehaviour
     public float GetPlayerProjectileSpeed() { return baseProjectileSpeed; }
     public float GetPlayerAttackInterval() { return attackInterval; }
     public int GetPlayerProjectilesPerShot() { return projectilesPerShot; }
+    public int GetPlayerLevel() { return currentLevel; }
 
     public void TakeDamage(float damage)
     {
