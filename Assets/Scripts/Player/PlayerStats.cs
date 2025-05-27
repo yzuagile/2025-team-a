@@ -102,13 +102,13 @@ public class PlayerStats : MonoBehaviour
     public int GetPlayerProjectilesPerShot() { return projectilesPerShot; }
     public int GetPlayerLevel() { return currentLevel; }
 
-    public void TakeDamage(float damage, GameObject damageSource = null)
+    public void TakeDamage(float damage)
     {
-        if (currentHealth <= 0) return;
+        if (currentHealth <= 0)
+            return;
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         Debug.Log($"PlayerStats: 玩家受到 {damage} 點傷害, 剩餘 HP: {currentHealth}");
-        GameEventManager.TriggerPlayerHealthChanged(HealthChangeType.Damage, damage, currentHealth, maxHealth, damageSource);
+
         // --- 更新 UI ---
         uiManager?.UpdateHealthUI(currentHealth, maxHealth);
         if (currentHealth <= 0)
@@ -130,17 +130,6 @@ public class PlayerStats : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
         }
-    }
-    
-    public void Heal(float heal)
-    {
-        if (currentHealth <= 0 || currentHealth >= maxHealth) return;
-        currentHealth += heal;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        
-        GameEventManager.TriggerPlayerHealthChanged(HealthChangeType.Heal, heal, currentHealth, maxHealth);
-        Debug.Log($"PlayerStats: 玩家受到 {heal} 點治療, 剩餘 HP: {currentHealth}");
-        uiManager?.UpdateHealthUI(currentHealth, maxHealth);
     }
 
     public void GainExperience(int amount)
@@ -176,27 +165,15 @@ public class PlayerStats : MonoBehaviour
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
 
         Debug.Log($"PlayerStats: 升級到 Lv. {currentLevel}! 下一級需要 {expToNextLevel} 經驗。");
-        if (uiManager != null)
-        {
-            uiManager.UpdateExperienceUI(currentExp, expToNextLevel);
-            uiManager.UpdateLevelText(currentLevel);
-            uiManager.UpdateHealthUI(currentHealth, maxHealth);
 
-            // --- 通知 GameStateManager 進入升級狀態 ---
-            if (GameStateManager.instance != null)
-            {
-                GameStateManager.instance.EnterLevelUpState();
-            }
-            else
-            {
-                Debug.LogError("PlayerStats: 找不到 GameStateManager 實例！無法切換到 LevelUp 狀態。遊戲可能不會暫停。");
-                // 如果找不到 GameStateManager，仍然嘗試顯示 UI，但遊戲不會暫停
-                Time.timeScale = 0f; // 緊急暫停
-            }
-        }
-
+        //  更新UI
+        uiManager?.UpdateExperienceUI(currentExp, expToNextLevel);
+        uiManager?.UpdateLevelText(currentLevel);
         //  升級時血量回滿
         currentHealth = maxHealth;
+        uiManager?.UpdateHealthUI(currentHealth, maxHealth);
+        //  觸發升級選項 UI
+        uiManager?.ShowUpgradePanel();
 
         List<UpgradeOptionData> chosenOptions = ChooseUpgradeOptions();
         uiManager.ShowUpgradePanel(chosenOptions);
