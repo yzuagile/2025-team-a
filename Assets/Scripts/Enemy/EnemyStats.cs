@@ -50,6 +50,10 @@ public class EnemyStats : MonoBehaviour
     {
         skeleton = GameObject.FindGameObjectsWithTag("skeleton");
         animator=GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning($"{gameObject.name} 沒有 Animator 元件，部分動畫功能將無法使用！");
+        }
     }
 
     // Update is called once per frame
@@ -111,5 +115,15 @@ public class EnemyStats : MonoBehaviour
 
         Debug.Log($"{gameObject.name}死亡，銷毀GameObject");
         Destroy(gameObject);
+    }
+
+
+    public void Init(EnemyData data, GameObject orbPrefab)
+    {
+        this.enemyData = data;
+        this.experienceOrbPrefab = orbPrefab;
+
+        currentHealth = data.maxHealth;
+        currentMovementSpeed = data.movementSpeed;
     }
 }

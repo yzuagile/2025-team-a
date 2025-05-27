@@ -46,7 +46,9 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        if (animator == null)
+            animator = GetComponent<Animator>();
+       // animator = GetComponent<Animator>();
         currentHealth = maxHealth;
 
         playerMovements = GetComponent<PlayerMovements>();
