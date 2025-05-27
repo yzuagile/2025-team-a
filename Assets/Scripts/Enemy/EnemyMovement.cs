@@ -74,6 +74,16 @@ public class EnemyMovement : MonoBehaviour
 
         Vector2 targetPosition = rb.position + displacement;
 
+        if (directionToPlayer.x > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);     // 面向右
+        }
+        else if (directionToPlayer.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);   // 面向左
+        }
+
+
         rb.MovePosition(targetPosition);
     }
 

@@ -76,6 +76,7 @@ public class EnemyStats : MonoBehaviour
         if (enemyData == null || currentHealth <= 0) return;
         
         currentHealth -= damage;
+        
         if (currentHealth <= 0)
         {
             die();
@@ -96,6 +97,7 @@ public class EnemyStats : MonoBehaviour
         if (CompareTag("skeleton"))
         {
             canMove = false;
+            gameObject.tag = "Untagged";
             StartCoroutine(DieWithAnimation());
         }
         else

@@ -394,7 +394,7 @@ MonoBehaviour:
   canMove: 1
   projectilesPerShot: 1
   attackInterval: 1
-  experienceOrbPrefab: {fileID: 4188602671250987629, guid: f7470c92ce038f7419eed27aad32721e,
+  experienceOrbPrefab: {fileID: 390932378939178782, guid: 98e304bf03e5e4145b112dbd5e97bc73,
     type: 3}
   isPlayerInRange: 0
 --- !u!114 &318974186514941653

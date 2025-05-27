@@ -8,18 +8,18 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D collider;
-    
+
     private Transform target;
     public GameObject hitEffect;
     private float moveSpeed;
     private float damage;
-    private float lifetime  = 5f;
+    private float lifetime = 5f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
-        
+
         Destroy(gameObject, lifetime);
     }
 
@@ -29,38 +29,38 @@ public class Projectile : MonoBehaviour
         this.moveSpeed = moveSpeed;
         this.damage = damage;
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
     {
         if (target == null || !target.gameObject.activeInHierarchy)
         {
-            Vector2 currentMovement = transform.up * moveSpeed * Time.fixedDeltaTime;
+            Vector2 currentMovement = transform.right * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + currentMovement);
-            target = null;
             return;
         }
-        
+
         Vector2 direction = (target.position - transform.position).normalized;
-        
-        Vector2 displacement = direction * moveSpeed * Time.fixedDeltaTime;
-        
-        rb.MovePosition(rb.position + displacement);
-        
+         
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        Vector2 displacement = direction * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + displacement);
     }
+
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -71,7 +71,7 @@ public class Projectile : MonoBehaviour
             GameObject hit = Instantiate(hitEffect, enemyStats.transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(hit, 0.5f);
-          
+
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+using UnityEngine.SceneManagement; // 放在最上面
 [RequireComponent(typeof(PlayerMovements))]
 public class PlayerStats : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public int currentExp = 0;
     public int expToNextLevel = 100;
     public float levelExpMultiplier = 1.5f;
+    public GameObject LeveLupAnimation;
 
     [Header("Player Health")]
     public float currentHealth;
@@ -41,8 +43,8 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject gameOverPanel; // Assign in Inspector
 
-    public GameObject Levelup;
-    public Transform PlayerPosition;
+    
+ 
 
     void Awake()
     {
@@ -82,6 +84,10 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         InitializeUI();
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false); // 開始時關閉死亡面板
+        }
     }
 
     // Update is called once per frame
@@ -119,6 +125,10 @@ public class PlayerStats : MonoBehaviour
         {
             GetComponent<PlayerAttackController>().enabled = false;
         }
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
     }
 
     public void GainExperience(int amount)
@@ -138,10 +148,18 @@ public class PlayerStats : MonoBehaviour
             uiManager?.UpdateExperienceUI(currentExp, expToNextLevel);
         }
     }
-
+    public void RestartGame()
+    {
+        Debug.Log("Restart 被按了！");
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name); // 重新加載目前場景
+    }
     void LevelUp()
     {
         currentLevel++;
+        GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
+        Levelupeffect.transform.SetParent(transform);
+        Destroy(Levelupeffect, 2.02f);
         currentExp -= expToNextLevel;
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
 

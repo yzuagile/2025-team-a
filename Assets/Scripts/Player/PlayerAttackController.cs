@@ -76,7 +76,7 @@ public class PlayerAttackController : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             EnemyStats enemy = hit.GetComponent<EnemyStats>();
-            if (enemy != null && enemy.gameObject.activeInHierarchy)
+            if (enemy != null && enemy.gameObject.activeInHierarchy && !enemy.CompareTag("Untagged"))
             {
                 float distance = Vector3.Distance(hit.transform.position, transform.position);
                 if (distance < minDistance)
