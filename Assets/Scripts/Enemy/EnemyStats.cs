@@ -94,6 +94,25 @@ public class EnemyStats : MonoBehaviour
             if (orbScript != null)
                 orbScript.SetExperience(GetExperienceDropped());
         }
+        // 通知玩家增加擊殺數（假設玩家物件標籤為 "Player"）
+        GameObject playerGO = GameObject.FindGameObjectWithTag("Player");
+        if (playerGO != null)
+        {
+            PlayerStats playerStats = playerGO.GetComponent<PlayerStats>();
+            if (playerStats != null)
+            {
+                playerStats.IncrementKillCount();
+            }
+            else
+            {
+                Debug.LogWarning("EnemyStats: 找不到 PlayerStats 組件，無法增加擊殺數。");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("EnemyStats: 找不到標籤為 'Player' 的物件，無法增加擊殺數。");
+        }
+
         if (CompareTag("skeleton"))
         {
             canMove = false;
