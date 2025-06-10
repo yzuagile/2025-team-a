@@ -69,7 +69,6 @@
       "dependencies": {
         "com.unity.2d.common": "8.0.3",
         "com.unity.mathematics": "1.1.0",
-        "com.unity.2d.common": "8.0.3",
         "com.unity.modules.physics2d": "1.0.0"
       },
       "url": "https://packages.unity.com"
