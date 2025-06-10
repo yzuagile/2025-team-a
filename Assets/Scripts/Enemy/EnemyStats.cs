@@ -18,7 +18,7 @@ public class EnemyStats : MonoBehaviour
     
     private Animator animator;
     public bool isPlayerInRange = false;
-
+    public List<PowerUpData> availablePowerUps;
     void Awake()
     {
         if (enemyData != null)
@@ -92,7 +92,35 @@ public class EnemyStats : MonoBehaviour
             GameObject orbGO  = Instantiate(experienceOrbPrefab, transform.position, Quaternion.identity);
             ExperienceOrb orbScript = orbGO.GetComponent<ExperienceOrb>();
             if (orbScript != null)
+            {
                 orbScript.SetExperience(GetExperienceDropped());
+
+                if (availablePowerUps != null && availablePowerUps.Count > 0 &&
+                Random.value < enemyData.powerUpDropChance) // Random.value 返回 0.0 到 1.0 的浮點數
+                {
+                    // 從列表中隨機選擇一個 PowerUp
+                    int randomIndex = Random.Range(0, availablePowerUps.Count);
+                    PowerUpData chosenPowerUpData = availablePowerUps[randomIndex];
+
+                    if (chosenPowerUpData != null && chosenPowerUpData.pickupPrefab != null)
+                    {
+                        // 在敵人死亡位置生成 PowerUp 的 Prefab
+                        GameObject powerUpGO = Instantiate(chosenPowerUpData.pickupPrefab, transform.position, Quaternion.identity);
+                        PowerUpPickup pickupScript = powerUpGO.GetComponent<PowerUpPickup>();
+
+                        if (pickupScript != null)
+                        {
+                            // 將對應的 ScriptableObject 數據傳遞給它
+                            pickupScript.powerUpData = chosenPowerUpData;
+                        }
+                        else
+                        {
+                            Debug.LogError($"PickUpManager: 生成的道具 {chosenPowerUpData.powerUpName} 上沒有 PowerUpPickup 腳本！");
+                            Destroy(powerUpGO);
+                        }
+                    }
+                }
+            }
         }
         if (CompareTag("skeleton"))
         {

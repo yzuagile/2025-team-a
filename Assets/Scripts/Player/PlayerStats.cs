@@ -294,4 +294,92 @@ public class PlayerStats : MonoBehaviour
         }
         // (可選) 播放一個成功的音效或小動畫
     }
+    // 在 PlayerStats.cs 的變數區
+    // 用於追蹤正在進行的 Buff 協程，以便在拾取新 Buff 時重置舊的
+    private Coroutine movementSpeedBuffCoroutine;
+    private Coroutine attackSpeedBuffCoroutine;
+    private Coroutine attackDamageBuffCoroutine;
+
+
+    // --- 添加這個公開方法 ---
+    public void ApplyPowerUp(PowerUpData powerUp)
+    {
+        if (powerUp == null) return;
+
+        Debug.Log($"玩家拾取了道具: {powerUp.powerUpName}");
+
+        switch (powerUp.type)
+        {
+            case PowerUpType.MovementSpeedBuff:
+                // 如果已有同類 Buff，先停止舊的，再啟動新的 (刷新持續時間)
+                if (movementSpeedBuffCoroutine != null)
+                    StopCoroutine(movementSpeedBuffCoroutine);
+                movementSpeedBuffCoroutine = StartCoroutine(MovementSpeedBuffCoroutine(powerUp.value1, powerUp.duration));
+                break;
+
+            case PowerUpType.AttackSpeedBuff:
+                if (attackSpeedBuffCoroutine != null)
+                    StopCoroutine(attackSpeedBuffCoroutine);
+                attackSpeedBuffCoroutine = StartCoroutine(AttackSpeedBuffCoroutine(powerUp.value1, powerUp.duration));
+                break;
+
+            case PowerUpType.AttackDamageBuff:
+                if (attackDamageBuffCoroutine != null)
+                    StopCoroutine(attackDamageBuffCoroutine);
+                attackDamageBuffCoroutine = StartCoroutine(AttackDamageBuffCoroutine(powerUp.value1, powerUp.duration));
+                break;
+            default:
+                Debug.LogWarning($"未處理的 PowerUp 類型: {powerUp.type}");
+                break;
+        }
+    }
+
+    // --- 為每個 Buff 類型創建一個協程 ---
+
+    private IEnumerator MovementSpeedBuffCoroutine(float speedIncrease, float duration)
+    {
+        // 應用 Buff
+        baseMoveSpeed += speedIncrease;
+        if (playerMovements != null) playerMovements.movementSpeed = baseMoveSpeed;
+        Debug.Log($"移速提升！持續 {duration} 秒。");
+
+        // 等待持續時間
+        yield return new WaitForSeconds(duration);
+
+        // 移除 Buff
+        baseMoveSpeed -= speedIncrease;
+        if (playerMovements != null) playerMovements.movementSpeed = baseMoveSpeed;
+        Debug.Log("移速 Buff 結束。");
+        movementSpeedBuffCoroutine = null; // 清理協程引用
+    }
+
+    private IEnumerator AttackSpeedBuffCoroutine(float intervalReduction, float duration)
+    {
+        // 應用 Buff
+        attackInterval -= intervalReduction;
+        Debug.Log($"攻速提升！持續 {duration} 秒。");
+
+        // 等待
+        yield return new WaitForSeconds(duration);
+
+        // 移除 Buff
+        attackInterval += intervalReduction;
+        Debug.Log("攻速 Buff 結束。");
+        attackSpeedBuffCoroutine = null;
+    }
+
+    private IEnumerator AttackDamageBuffCoroutine(float damageIncrease, float duration)
+    {
+        // 應用 Buff
+        baseAttackDamage += damageIncrease;
+        Debug.Log($"攻擊力提升！持續 {duration} 秒。");
+
+        // 等待
+        yield return new WaitForSeconds(duration);
+
+        // 移除 Buff
+        baseAttackDamage -= damageIncrease;
+        Debug.Log("攻擊力 Buff 結束。");
+        attackDamageBuffCoroutine = null;
+    }
 }
