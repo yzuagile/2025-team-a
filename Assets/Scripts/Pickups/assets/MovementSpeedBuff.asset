@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded8445752b1f234eb0d0d12dc796c01, type: 3}
   m_Name: MovementSpeedBuff
   m_EditorClassIdentifier: 
-  type: 6
-  powerUpName: "\u65B0\u9053\u5177"
+  type: 2
+  powerUpName: MovementSpeedBuff
   icon: {fileID: 0}
-  duration: 5
-  value1: 0
+  duration: 10
+  value1: 2
   value2: 0
-  pickupPrefab: {fileID: 0}
+  pickupPrefab: {fileID: 4629201558540390122, guid: 0c363409da18f0845820ef81e278778c,
+    type: 3}

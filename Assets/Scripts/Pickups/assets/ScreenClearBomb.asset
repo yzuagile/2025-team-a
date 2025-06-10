@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded8445752b1f234eb0d0d12dc796c01, type: 3}
   m_Name: ScreenClearBomb
   m_EditorClassIdentifier: 
-  type: 6
-  powerUpName: "\u65B0\u9053\u5177"
+  type: 3
+  powerUpName: ScreenClearBomb
   icon: {fileID: 0}
-  duration: 5
+  duration: 0
   value1: 0
   value2: 0
-  pickupPrefab: {fileID: 0}
+  pickupPrefab: {fileID: 2974948408743950858, guid: 9ddca225e04c32f40b9489030df494cd,
+    type: 3}

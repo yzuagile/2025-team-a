@@ -18,3 +18,4 @@ MonoBehaviour:
   movementSpeed: 2
   contactDamage: 50
   experienceDropped: 100
+  powerUpDropChance: 1
