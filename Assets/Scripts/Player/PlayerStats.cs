@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 using UnityEngine.SceneManagement; // 放在最上面
 [RequireComponent(typeof(PlayerMovements))]
@@ -37,14 +38,21 @@ public class PlayerStats : MonoBehaviour
     public List<UpgradeOptionData> availableUpgrades; // 所有可用的升級選項 Data Assets
     public int upgradesToShowPerLevel = 3; // 每次升級顯示幾個選項
 
+    [Header("Game Over UI Elements")]
+    public GameObject gameOverPanel;    // 結算畫面整個面板
+    public TextMeshProUGUI killCountText;      // 顯示擊殺數量的 Text
+    public TextMeshProUGUI survivalTimeText;   // 顯示存活時間的 Text
+    public TextMeshProUGUI levelReachedText;   // 顯示達成等級的 Text
+
+    [Header("Stats")]
+    private int killCount = 0;          // 擊殺數量
+    private float survivalTime = 0f;    // 存活時間（秒）
+
     private PlayerMovements playerMovements;
 
     private UIManager uiManager;
+   
 
-    public GameObject gameOverPanel; // Assign in Inspector
-
-    
- 
 
     void Awake()
     {
@@ -93,7 +101,15 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth > 0)
+        {
+            survivalTime += Time.deltaTime;
+        }
+    }
 
+    public void IncrementKillCount()
+    {
+        killCount++;
     }
 
     public float GetPlayerAttackDamage() { return baseAttackDamage; }
@@ -129,6 +145,7 @@ public class PlayerStats : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+            DisplayStats();
         }
     }
 
@@ -293,5 +310,14 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
         // (可選) 播放一個成功的音效或小動畫
+    }
+    void DisplayStats()
+    {
+        if (killCountText != null)
+            killCountText.text = $"Number of kills: {killCount}";
+        if (survivalTimeText != null)
+            survivalTimeText.text = $"survival time: {survivalTime:F1} s";
+        if (levelReachedText != null)
+            levelReachedText.text = $"Achieve level: Lv. {currentLevel}";
     }
 }
