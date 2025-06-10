@@ -85,6 +85,7 @@ public class EnemyStats : MonoBehaviour
 
     public void die()
     {
+        FindObjectOfType<PlayerStats>().AddKill();
 
         Debug.Log($"EnemyStats: {enemyData.enemyName} ({gameObject.name}) 死亡！");
         if (experienceOrbPrefab != null && enemyData != null)

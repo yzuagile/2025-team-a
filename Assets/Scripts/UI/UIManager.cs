@@ -17,6 +17,10 @@ public class UIManager : MonoBehaviour
     public GameObject upgradePanel;
     public List<UpgradeButtonUI> upgradeButtons; // 存放面板中所有升級按鈕的引用
 
+    [Header("遊戲統計")]
+    public TMP_Text statsText; // 這個拖 UI 元素到 Inspector 上
+
+
     private PlayerStats playerStats; // 引用 PlayerStats，方便在關閉面板時通知
 
     void Awake()
@@ -87,7 +91,22 @@ public class UIManager : MonoBehaviour
             Debug.LogWarning("UIManager: Upgrade Panel 未設定！無法顯示。");
         }
     }
-    
+
+    public void ShowPlayerStatsSummary()
+    {
+        if (statsText != null && playerStats != null)
+        {
+            statsText.text = $"擊殺數：{playerStats.killCount}\n" +
+                             $"遊戲時間：{playerStats.playTime:F1} 秒\n" +
+                             $"等級：{playerStats.currentLevel}";
+        }
+        else
+        {
+            Debug.LogWarning("UIManager: statsText 或 playerStats 為 null，無法顯示統計資訊！");
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {

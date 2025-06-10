@@ -33,6 +33,10 @@ public class PlayerStats : MonoBehaviour
     [Header("Player Pickup")]
     public float pickupRadius = 1.5f;
 
+    [Header("Gameplay Stats")]
+    public int killCount = 0;         // 擊殺數
+    public float playTime = 0f;       // 遊戲時間（秒）
+
     [Header("Upgrade Option")]
     public List<UpgradeOptionData> availableUpgrades; // 所有可用的升級選項 Data Assets
     public int upgradesToShowPerLevel = 3; // 每次升級顯示幾個選項
@@ -88,12 +92,23 @@ public class PlayerStats : MonoBehaviour
         {
             gameOverPanel.SetActive(false); // 開始時關閉死亡面板
         }
+        if (uiManager != null)
+        {
+            uiManager.ShowPlayerStatsSummary();
+        }
+
+
+    }
+    public void AddKill()
+    {
+        killCount++;
+        Debug.Log($"PlayerStats: 擊殺數增加，目前為 {killCount}");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        playTime += Time.deltaTime;
     }
 
     public float GetPlayerAttackDamage() { return baseAttackDamage; }
