@@ -51,10 +51,8 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private bool isDead = false;
     void Update()
     {
-        //isDead = anim.GetBool("isDead");
     }
 
     void FixedUpdate()
