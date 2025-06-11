@@ -718,7 +718,6 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 417382739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1038,9 +1037,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440575467}
-=======
-  m_GameObject: {fileID: 477610275}
->>>>>>> 0e411c798e7d35117a90fd65131120d891304976:Assets/Scenes/GameScene.unity
   m_CullTransparentMesh: 1
 --- !u!1 &519420028
 GameObject:
@@ -1428,11 +1424,7 @@ RectTransform:
   - {fileID: 529741234}
   - {fileID: 273845843}
   - {fileID: 2020584103}
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
-  - {fileID: 1557543411}
-=======
   - {fileID: 1237927447}
->>>>>>> 0e411c798e7d35117a90fd65131120d891304976:Assets/Scenes/GameScene.unity
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2830,7 +2822,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: -0.49999}
   m_SizeDelta: {x: -10, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD:Assets/Scenes/SampleScene.unity
 --- !u!1001 &1512413122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2986,8 +2977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557543410}
   m_CullTransparentMesh: 1
-=======
->>>>>>> 0e411c798e7d35117a90fd65131120d891304976:Assets/Scenes/GameScene.unity
 --- !u!1 &1590694752
 GameObject:
   m_ObjectHideFlags: 0
