@@ -18,6 +18,8 @@ public class EnemyData : ScriptableObject // 注意：繼承自 ScriptableObject
 
     [Header("掉落")]
     public int experienceDropped = 10;
+    [Range(0, 1)] // 使用滑桿讓編輯更直觀
+    public float powerUpDropChance = 0.05f; // 5% 的機率
 
     // [Header("視覺與預製件")]
     // public Sprite displaySprite; // (可選) 可以連 Sprite 也定義在這
