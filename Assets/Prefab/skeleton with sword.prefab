@@ -400,6 +400,7 @@ MonoBehaviour:
   availablePowerUps:
   - {fileID: 11400000, guid: df6564f44e59dd346b5a9eca05ba0da2, type: 2}
   - {fileID: 11400000, guid: cbf8b6e420dbf1a459c47e4d584dd99a, type: 2}
+  - {fileID: 11400000, guid: f8771609a862bcc41af1fcf8c9afde4a, type: 2}
 --- !u!114 &318974186514941653
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,6 @@ MonoBehaviour:
   enemyName: New Enemy
   maxHealth: 50
   movementSpeed: 2
-  contactDamage: 50
+  contactDamage: 10
   experienceDropped: 100
   powerUpDropChance: 0.5
