@@ -70,7 +70,8 @@ public class ExperienceOrb : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (canMoveTowardsPlayer && playerTransform == null)return;
+        if (playerTransform == null || playerStats == null) return;
+        if (!canMoveTowardsPlayer) return;
         // 計算朝向玩家的方向
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         // 計算位移

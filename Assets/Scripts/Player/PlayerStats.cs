@@ -172,16 +172,27 @@ public class PlayerStats : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name); // 重新加載目前場景
     }
+    IEnumerator FollowPositionOnly(Transform effect, Transform target)
+    {
+        while (effect != null && target != null)
+        {
+            effect.position = target.position;
+            effect.rotation = Quaternion.identity; // 強制不旋轉
+            yield return null;
+        }
+    }
     void LevelUp()
     {
         currentLevel++;
         //GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
         //Levelupeffect.transform.SetParent(transform);
-        //Destroy(Levelupeffect, 2.02f);
-        GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
-
-        // 不設定 SetParent
+        GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, transform.rotation);
+        StartCoroutine(FollowPositionOnly(Levelupeffect.transform, transform));
         Destroy(Levelupeffect, 2.02f);
+        //GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
+
+        //// 不設定 SetParent
+        //Destroy(Levelupeffect, 2.02f);
 
         currentExp -= expToNextLevel;
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
