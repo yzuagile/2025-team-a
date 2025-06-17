@@ -175,9 +175,14 @@ public class PlayerStats : MonoBehaviour
     void LevelUp()
     {
         currentLevel++;
+        //GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
+        //Levelupeffect.transform.SetParent(transform);
+        //Destroy(Levelupeffect, 2.02f);
         GameObject Levelupeffect = Instantiate(LeveLupAnimation, transform.position, Quaternion.identity);
-        Levelupeffect.transform.SetParent(transform);
+
+        // 不設定 SetParent
         Destroy(Levelupeffect, 2.02f);
+
         currentExp -= expToNextLevel;
         expToNextLevel = Mathf.FloorToInt(expToNextLevel * levelExpMultiplier);
 

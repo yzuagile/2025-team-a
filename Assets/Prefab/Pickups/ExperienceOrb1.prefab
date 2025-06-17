@@ -162,5 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceValue: 1
-  moveSpeed: 6
+  moveSpeed: 20
   detectionDelay: 0.2
