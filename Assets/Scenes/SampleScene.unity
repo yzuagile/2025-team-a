@@ -699,7 +699,7 @@ MonoBehaviour:
   LeveLupAnimation: {fileID: 2412224398110798603, guid: 2e1a27df7733b44eb91af5dbc43715e1,
     type: 3}
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 100
   baseAttackDamage: 10
   baseProjectileSpeed: 8
   attackInterval: 1

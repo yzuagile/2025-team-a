@@ -359,6 +359,12 @@ public class PlayerStats : MonoBehaviour
                     StopCoroutine(attackDamageBuffCoroutine);
                 attackDamageBuffCoroutine = StartCoroutine(AttackDamageBuffCoroutine(powerUp.value1, powerUp.duration));
                 break;
+
+            case PowerUpType.Heal:
+                currentHealth = maxHealth;
+                uiManager?.UpdateHealthUI(currentHealth, maxHealth);
+                break;
+
             default:
                 Debug.LogWarning($"未處理的 PowerUp 類型: {powerUp.type}");
                 break;

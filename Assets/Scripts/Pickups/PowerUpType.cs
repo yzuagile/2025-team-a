@@ -8,7 +8,7 @@ public enum PowerUpType
 
     // 立即生效類
     ScreenClearBomb,  // 清場炸彈
-    Heal,             // (未來可加) 生命恢復
+    Heal,             //生命恢復
     Magnet,           // (未來可加) 磁鐵，吸附所有經驗球
 
     None
