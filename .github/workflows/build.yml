@@ -24,6 +24,7 @@ jobs:
             Library-
 
       - name: Run tests
+        id: tests
         uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -33,6 +34,8 @@ jobs:
           customImage: unityci/editor:ubuntu-2022.3.46f1-windows-mono-3.1.0
           testMode: all      # all / editmode / playmode
           artifactsPath: test-results
+          coverageOptions: generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;dontClear
+          coveragePath: coverage-results
 
       - name: Publish Unity Test Report
         if: always()       # 即使測試失敗也要發佈報告
@@ -48,6 +51,13 @@ jobs:
         with:
           name: Test Results
           path: test-results
+
+      - name: Upload Coverage Results (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Coverage Results
+          path: ${{ steps.tests.outputs.coveragePath }}
 
   build:
     name: Build Unity Project
